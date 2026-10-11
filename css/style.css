@@ -1,0 +1,143 @@
+/*Your Code Here*/
+
+/*Write selector/rule property to add your border when
+links in the navigation are in the hover or focus state.*/
+
+
+nav a:hover,
+nav a:focus {
+  border: 2px dotted purple;
+}
+
+/*Write selector/rule property to position the default position for the skip class element*/
+.skip {
+  position: relative;
+}
+.skip a { 
+     position: absolute;
+     top: -65px;
+     left: 10px;           /* 화면 좌측 위치 지정 */
+     background: #ffffff;  /* 흰색 배경을 주어야 뒤쪽 요소와 글자가 겹치지 않음 */
+     color: #000000;       /* 글자색 지정 */
+     padding: 8px 12px;    /* 버튼 형태로 보이도록 여백 추가 */
+     z-index: 1000;        /* 다른 헤더 및 본문 요소보다 위에 표시 */
+     text-decoration: none;
+   }
+/*Write selector/rule property to position the skip class element when it is in focus*/
+
+.skip a:focus {
+     top: 25px;
+     outline: 5px dashed green;
+    }
+
+/*Write selector/rule property to style all elements when in focus*/
+
+*:focus {
+     outline : 5px dashed green;
+   }
+/*Write selector/rule property to style the container */
+
+.container {
+     display : grid;
+     grid-template-columns: repeat(5, 1fr)  ;
+     gap: 13px;
+   }
+
+/*Write selector/rule property to add the background image to the first div in the grid and place it in the grid. */
+.container > :first-child {
+     grid-column: 1 / -1; /* 전체 열(1~6번 선)을 모두 차지 */
+     background-image: url('../images/header.jpg'); /* header.jpg 배경 이미지 설정 */
+     background-repeat: no-repeat;
+   }
+
+/* Steps 6 and 7: Write the selector/rule properties to  place the next five elements in the next
+ five rows in the grid. */
+
+      /*This will be a lot of rules.... but be strategic and combine selectors*/
+.accounts, .onlinebanking, .security, .loans, .contact {
+grid-column: 2 / span 3;
+}
+
+
+.accounts-image, .onlinebanking-image, .security-image, .loans-image, .contact-image {
+     grid-column: 1 / -1;
+     max-height: 675px;
+     overflow: hidden;
+   }
+
+.accounts-image img, .onlinebanking-image img, .security-image img, .loans-image img, .contact-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.accounts, .accounts-image {
+     grid-row: 2;
+   }
+
+.onlinebanking, .onlinebanking-image {
+grid-row: 3;
+}
+
+.security, .security-image {
+grid-row: 4;
+}
+
+.loans, .loans-image {
+grid-row: 5;
+}
+
+.contact, .contact-image {
+grid-row: 6;
+}
+ /* Step 8: Write the selector/rule property to style the .text-block class. */
+
+ .text-block {
+  align-self: center;          /* Grid 셀 내에서 세로 중앙 정렬 */
+  text-align: center;          /* 텍스트 가로 중앙 정렬 */
+}
+   /* text-block 내부 리스트는 좌측 정렬 */
+   .text-block ul,
+   .text-block ol {
+     text-align: left;
+   }
+/* Add your media query here */
+@media (min-width: 825px) {
+
+  /* Step 10: Write the selector/rule property to style the nav element */
+
+  nav {
+    text-align: right;
+    padding: 35px 0;           /* 상하 35px, 좌우 0 */
+   }
+
+  /* Step 11: Write the selector/rule property to update the .container class */
+
+  .container {
+     grid-template-columns: repeat(7, 1fr); /* 7개 동일 비율 열 */
+   }
+  /* Steps 12 - 15: Update the grid-column property of the grid's children (where-needed)*/
+
+  .accounts, .security, .contact {
+     grid-column: 4 / span 3;
+   }
+   .onlinebanking, .loans {
+     grid-column: 2 / span 3;
+   }
+ 
+   /* accounts-image, security-image, contact-image: 1번째 열부터 5개 열 차지 */
+   .accounts-image, .security-image, .contact-image {
+     grid-column: 1 / span 5;
+   }
+ 
+   /* onlinebanking-image, loans-image: 3번째 열부터 5개 열 차지 */
+   .onlinebanking-image, .loans-image {
+     grid-column: 3 / span 5;
+   }
+ /* Step 16:Write the selector/rule property to update the .text-block class */
+
+ .text-block {
+     max-height: 235px;
+     overflow-y: auto; /* 넘치는 내용에 스크롤 생성 (키보드 접근성 대응) */
+   }
+ 
+ }
